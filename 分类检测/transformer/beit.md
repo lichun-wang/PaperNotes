@@ -95,7 +95,7 @@ github: https://github.com/microsoft/unilm/tree/master/beit
 
   
 
-  
+  - **补充：**BEiT中使用了relative_position_biases 应用到每一个self-attention中，就是在self-attention内部，还有一个位置信息+到了atten的结果上，这个论文中没有体现，代码中写的。
 
   #### Semantic segmentation
 
