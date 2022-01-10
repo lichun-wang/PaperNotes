@@ -1,6 +1,6 @@
 # SimCLR
 
->contrastive learning，简单来说就是通过unlabel data,构建相似图像与非相似图像集，然后判断模型输出向量，相似图像比较接近，非相似图像比较远。本文的主要方法也比较简单，相比较与moco采用的query encoder 和key encoder,本文采用相同的encoder，通过大的batch（8192）来构建相似与非相似样本集，通过不同的augment来产生positive pair以及negative pair, 通过positive pair和nagative pair 的相似度来计算contrastive loss，得到一个比较好的特征表达的模型。
+>contrastive learning，简单来说就是通过unlabel data,构建相似图像与非相似图像集，然后判断模型输出向量，相似图像比较接近，非相似图像比较远。本文的主要方法也比较简单，相比较于moco采用的query encoder 和key encoder的动量方法,本文采用相同的encoder，通过大的batch（8192）来构建相似与非相似样本集，通过不同的augment来产生positive pair以及negative pair, 通过positive pair和nagative pair 的相似度来计算contrastive loss，得到一个比较好的特征表达的模型。
 
 ---
 
@@ -36,7 +36,7 @@ Github: https://github.com/google-research/simclr.
 
 - 随机的augment来产生positive pairs
 - 网络结构比较随意，这里采用的是resnet，average pooling layer的输出作为特征表达
-- 在上面的输出上，加上了一个projection head(2层MLP，中间ReLU)，实验发现，这样做更有利于contrastive loss的计算（==kaiming的moco也是后面加了fc，不过是加1层，这个加了2层==）
+- 在上面的输出上，加上了一个projection head(2层MLP，中间ReLU)，实验发现，这样做更有利于contrastive loss的计算
 - 对于batch_size=N，经过aug，我们会得到2N的数据，其中正样本1对，其余的2（N-1）的数据，均作为负样本。
 - $sim(u,v) = u^Tv/||u||*||v||$, 这不就是数学上向量的内积的夹角嘛，在代码中，相当于点积后做了归一化操作，==就是cosine similarity，余弦相似度==， ==这里跟moco也是一样的，只不过moco的故意化操作L2 norm在网络中完成了==
 - ![image-20211110112345449](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20211110112345449.png)
@@ -66,7 +66,7 @@ Default settng
 - 实验发现，如果是两个组合的话，random crop + color distortion 效果比较好
 - 并且实验发现，使用auto augment没有random crop + color distortion的效果好
 - 并且对color distortion进行研究发现，随着强度的增强，模型效果会变好，但是sepervise model，会变坏。
-- 总而言之，unserpervise learnging 比 sepervise learning 需要更强的augment
+- ==**总而言之，unserpervise learnging 比 sepervise learning 需要更强的augment**==
 
 ## Architectures
 

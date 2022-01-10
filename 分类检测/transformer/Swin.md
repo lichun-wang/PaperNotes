@@ -1,6 +1,6 @@
 # Swin Transformer: Hierarchical（分层） Vision Transformer using Shifted Windows
 
-Author : liu Ze
+Author : Liu Ze, Hu Han
 
 微软亚洲研究院
 

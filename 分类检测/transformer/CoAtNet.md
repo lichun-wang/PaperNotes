@@ -10,15 +10,15 @@ Zihang Dai
 
 ## Abstract
 
-* 虽然transformers倾向于更大的模型容量，但是由于其缺乏正确的归纳偏差（right inductive bias），可能会比conv弱一些。==这里后来我的理解就是泛化性比较弱，所以需要大量的图像嘛==。
+* 虽然transformers倾向于更大的模型容量，但是由于其缺乏正确的归纳偏差（right inductive bias），可能会比conv弱一些。
 * depthwise conv + self-attention
 * vertical stacking conv and attention
-* imagenet : 86%,  if use jft-3b : 99.88%
+* imagenet : 86%,  if use jft-3b : 90.88%
 
 ## Introduction
 
 * vit的better performance 很大程度上是依赖于大量的数据的JFT-300，如果没有大量数据，vit效果不行的。
-* 说缺乏certain desireable inductive biases, 需要大量的数据进行补偿，==归纳偏差是说对图像的特征进行归纳吗？没太理解？==， 后来在wikipedia找到了答案：https://en.wikipedia.org/wiki/Inductive_bias，简单说就是归纳能力，泛化能力。
+* 说缺乏certain desireable inductive biases, 需要大量的数据进行补偿，==归纳偏差是说对图像的特征进行归纳吗？没太理解？==， 后来知道了，其实是人为做的预先的假设，比如conv就是locality和平移不变性。
 * 卷积具有较强的归纳能力，可以快速收敛；atten具有较好的模型能力，适应较大的数据量，那将二者进行结合不就既有了generalization又有了model capacity.
 
 ## Model
