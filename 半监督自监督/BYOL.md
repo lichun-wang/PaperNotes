@@ -74,9 +74,26 @@ GitHub : https://github.com/deepmind/deepmind-research/tree/master/byol
 ## Implementation details
 
 - augmentations as in simCLR
-- projection 的结构跟simclr也是一样的，并且predict layer也采用更projection相同的结构。
+- projection 的结构跟simclr也是一样的，并且predict layer也采用更projection相同的结构。默认情况下，projection和predictor的layer数量是2，如下代码：
 - LARS optimizer， cosine decay, base lr = 0.2  ， weight decay = 1.5e-6
 - momentum的变化是动态进行的 最开始是0.996，然后越来越大，直到1.
+
+```
+class MLP(nn.Module):
+    def __init__(self, dim, projection_size, hidden_size = 4096):
+        super().__init__()
+        self.net = nn.Sequential(
+            nn.Linear(dim, hidden_size),
+            nn.BatchNorm1d(hidden_size),
+            nn.ReLU(inplace=True),
+            nn.Linear(hidden_size, projection_size)
+        )
+
+    def forward(self, x):
+        return self.net(x)
+```
+
+
 
 ## Exp
 
