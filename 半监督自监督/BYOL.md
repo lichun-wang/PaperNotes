@@ -1,6 +1,6 @@
 # BYOL(bootstrap your own latent)
 
->BYOL使用了Teacher-Student架构进行自监督训练（其中Teacher Network是Student Network的历史版本的EMA），在没有任何负样本约束的情况下达到了不错的效果。本篇文章最大的创新点在于，没有使用对比学习常用的负样本，只是使用了正样本对来进行训练，关键点在于其增加的predictor，加了这个，相当于给了projection的输出结果一个缓冲，predictor是不会把参数传递给target网络的，所以这就相当于不再需要target网络的输出与online网络的输出是完全一致的，predictor还能做一轮映射，这个在减少坍塌上应该也起到了一定的作用（虽然在论文中的实验结果显示，有负样本参加训练的时候去掉predictor没掉几个点，但是只采用正样本的时候影响应该是比较大的，这个论文中没看到证明）
+>BYOL使用了Teacher-Student架构进行自监督训练（其中Teacher Network是Student Network的历史版本的EMA），在没有任何负样本约束的情况下达到了不错的效果。**本篇文章最大的创新点在于，没有使用对比学习常用的负样本**，只是使用了正样本对来进行训练，关键点在于其增加的predictor，加了这个，相当于给了projection的输出结果一个缓冲，predictor是不会把参数传递给target网络的，所以这就相当于不再需要target网络的输出与online网络的输出是完全一致的，predictor还能做一轮映射，这个在减少坍塌上应该也起到了一定的作用（虽然在论文中的实验结果显示，有负样本参加训练的时候去掉predictor没掉几个点，但是只采用正样本的时候影响应该是比较大的，这个论文中没看到证明）
 
 ---
 
@@ -22,8 +22,8 @@ GitHub : https://github.com/deepmind/deepmind-research/tree/master/byol
 
 - 目前主流的图像的特征表示学习上，表现比较好的是对比学习的方法，这种方法比较依赖于样本对的选取，比如：大的batch size, memory bank ,或者是难例挖掘策略等，并且也比较依赖于图像augment的选择。
 - BYOL没有采用负样本，取得了sota的水平。并且对augment更加的鲁棒
-- 解决collapsed问题比较关键，比如所有图像都输出相同的vector，本文采用了两个方法，1. 在online网络上增加了预测头，2. 对于target网络的更新，使用了一个slow-moving average的方法； 这里压力鼓励online的投影可以encode越来越多的信息，同时避免网络崩溃。
-- byol效果不错，如下图，但是当只使用random crop 作为augment的时候，byol效果没有ximclr效果好。
+- 解决collapsed问题比较关键，比如所有图像都输出相同的vector，本文采用了两个方法，1. 在online网络上增加了预测头，2. 对于target网络的更新，使用了一个slow-moving average的方法； 这里鼓励online的投影可以encode越来越多的信息，同时避免网络崩溃。
+- byol效果不错，如下图，但是当只使用random crop 作为augment的时候，byol效果没有simclr效果好。
 
 ![image-20220113110739934](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220113110739934.png)
 
@@ -37,7 +37,7 @@ GitHub : https://github.com/deepmind/deepmind-research/tree/master/byol
 
 ## Method
 
-- contrastive的方法中，通过判断不同的augment来进行discriminate图像，需要大量的负样本，是的这个判别任务具备一定的挑战性，来避免训练崩溃的问题。
+- contrastive的方法中，通过判断不同的augment来进行discriminate图像，需要大量的负样本，这个判别任务具备一定的挑战性，来避免训练崩溃的问题。
 
 - 那么这些负样本是一定要采用的吗？也就是文章的灵感来源。
 
@@ -57,7 +57,7 @@ GitHub : https://github.com/deepmind/deepmind-research/tree/master/byol
 
 - online会多一个predict layer , target没有这个layer，使得两个网络为非对称网络
 
-- loss采用的是简单的平方差loss,下面那个公示带hat的loss将 输入网络的v 和 v'互换后送入网络，计算的loss
+- loss采用的是简单的平方差loss,下面那个公式带hat的loss将 输入网络的v 和 v'互换后送入网络，计算的loss
 
   ![image-20220113192943909](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220113192943909.png)
 

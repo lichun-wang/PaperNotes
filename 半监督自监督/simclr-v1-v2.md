@@ -68,7 +68,7 @@ Default settng
 - 实验发现，如果是两个组合的话，random crop + color distortion 效果比较好
 - 并且实验发现，使用auto augment没有random crop + color distortion的效果好
 - 并且对color distortion进行研究发现，随着强度的增强，模型效果会变好，但是supervise model，会变坏。
-- ==**总而言之，unserpervise learnging 比 supervise learning 需要更强的augment**==
+- ==**总而言之，unserpervise learning 比 supervise learning 需要更强的augment**==
 
 ## Architectures
 
@@ -168,7 +168,7 @@ Default settng
 - 从下面这个表可以看出，自监督后，使用100%数据finetune是要比supervised直接训练的效果要好的。并且随着网络结构变得复杂，finetune后的表现是会变好的，虽然可能从resnet50->resnet101->resnet152 的变化可能并不是特别大，57%->62%->64%，但是当进一步加大152的时候，就飙到了75%，相比57%就比较明显了。并且可以看出，在监督学习领域，这个方法的提升可能不大（4%），但是对自监督明显就大了（9%），并且这个模型增大也不是一直涨，可以看到resnet152 sk x2 和 x3，相差就不是特别大了。这里的supervise应用了很多的augment
 - ![image-20220111113030474](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220111113030474.png)
 
-- 值得一提的是，当使用更大的resnets的时候，更深的projection head的作用就相对小一些了
+- 值得一提的是，当使用更大的resnet的时候，更深的projection head的作用就相对小一些了
 - 大的teacher还可以采用自蒸馏的方式，提升自己的效果
 - linear evaluation 和finetune是正相关的，即会同时升高
 
