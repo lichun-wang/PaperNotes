@@ -53,9 +53,9 @@ Github :   https://github.com/OpenAI/CLIP
 - minibatch size : 32768
 - mixed-precision
 
-![image-20220224164538637](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220224164538637.png)
+![image-20220224164538637](..\images\image-20220224164538637.png)
 
-![image-20220228155455676](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220228155455676.png)
+![image-20220228155455676](..\images\image-20220228155455676.png)
 
 ## Exp
 
@@ -80,11 +80,11 @@ Github :   https://github.com/OpenAI/CLIP
 
 zero-shot的效果很好，超过了resnet的16-shot,而 clip的few-shot,平均需要4-shot来达到zero-shot的能力。
 
-![image-20220310192533502](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220310192533502.png)
+![image-20220310192533502](..\images\image-20220310192533502.png)
 
 利用few-shot 训练 linear-probe 来达到zero-shot的能力，各个数据集需要的数据量：imagenet大约是16-shot
 
-![image-20220310192523352](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220310192523352.png)
+![image-20220310192523352](..\images\image-20220310192523352.png)
 
 
 

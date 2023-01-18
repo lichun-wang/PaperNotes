@@ -8,13 +8,13 @@
 
 
 
-![image-20220118200931484](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220118200931484.png)
+![image-20220118200931484](..\images\image-20220118200931484.png)
 
 
 
 * loss function:
 
-  ![image-20220119150433941](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220119150433941.png)
+  ![image-20220119150433941](..\images\image-20220119150433941.png)
 
 ## Result
 

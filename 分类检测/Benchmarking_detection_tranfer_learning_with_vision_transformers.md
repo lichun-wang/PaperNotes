@@ -21,7 +21,7 @@ code: will release in Detectron2
 
 ## Approach
 
-![image-20211202103755344](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20211202103755344.png)
+![image-20211202103755344](..\images\image-20211202103755344.png)
 
 ### Vit Backbone
 
@@ -93,5 +93,5 @@ code: will release in Detectron2
 
 一、如下是各种不同的初始化方法的结果：可以看到MAE效果是最好的， moco v3比random的效果要差一些，跟supervised的结果比较接近，这也是挺奇妙的；换到ViT-L上面，都有一定程度提高，MAE和BEiT效果比较接近。
 
-![image-20211202163924420](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20211202163924420.png)
+![image-20211202163924420](..\images\image-20211202163924420.png)
 

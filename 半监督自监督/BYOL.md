@@ -25,7 +25,7 @@ GitHub : https://github.com/deepmind/deepmind-research/tree/master/byol
 - 解决collapsed问题比较关键，比如所有图像都输出相同的vector，本文采用了两个方法，1. 在online网络上增加了预测头，2. 对于target网络的更新，使用了一个slow-moving average的方法； 这里鼓励online的投影可以encode越来越多的信息，同时避免网络崩溃。
 - byol效果不错，如下图，但是当只使用random crop 作为augment的时候，byol效果没有simclr效果好。
 
-![image-20220113110739934](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220113110739934.png)
+![image-20220113110739934](..\images\image-20220113110739934.png)
 
 ## Related work
 
@@ -49,9 +49,9 @@ GitHub : https://github.com/deepmind/deepmind-research/tree/master/byol
 
 - 结构如下图：
 
-![image-20220113192129808](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220113192129808.png)
+![image-20220113192129808](..\images\image-20220113192129808.png)
 
-![image-20220113191926086](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220113191926086.png)
+![image-20220113191926086](..\images\image-20220113191926086.png)
 
 - teacher是由online 更新来的
 
@@ -59,9 +59,9 @@ GitHub : https://github.com/deepmind/deepmind-research/tree/master/byol
 
 - loss采用的是简单的平方差loss,下面那个公式带hat的loss将 输入网络的v 和 v'互换后送入网络，计算的loss
 
-  ![image-20220113192943909](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220113192943909.png)
+  ![image-20220113192943909](..\images\image-20220113192943909.png)
 
-  ![image-20220113193706267](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220113193706267.png)
+  ![image-20220113193706267](..\images\image-20220113193706267.png)
 
   - 最终在下游任务中，我们只会使用$f_{\theta}$
 
@@ -99,13 +99,13 @@ class MLP(nn.Module):
 
 - Linear evaluation on ImageNet： res50达到了74.3%， res200（x2） 达到了79.6%
 
-- ![image-20220114100756688](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220114100756688.png)
+- ![image-20220114100756688](..\images\image-20220114100756688.png)
 
   
 
 - 迁移性如何呢？，应该说基本都超过了simclr，在多个任务上甚至超过了supervised
 
-  ![image-20220114102425474](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220114102425474.png)
+  ![image-20220114102425474](..\images\image-20220114102425474.png)
 
 - 实验证明在voc也是有效的，这里不贴图了。
 
@@ -113,12 +113,12 @@ class MLP(nn.Module):
 
 - Batch Size的影响：simclr由于负样本的数量减少快速的下降，byol并没有，在256->128这里才快速的下降，这里作者解释下降的原因是bn layer，因为只有这个是跟bs有关的。
 
-  ![image-20220114104229499](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220114104229499.png)
+  ![image-20220114104229499](..\images\image-20220114104229499.png)
 
 - augment的探索，这里作者说，说相同的图像的不同crop会共享图像的颜色直方图，这样就简单化了，使得网络不care其他信息了，所以simclr在这个基础上又加上了color jitter来进行调整。
 - 相比较于simclr，byol对于augment就会更加的鲁棒，因为online和target的网络不是同时更新的，所以会迫使online学到更多的信息，实验事实也证明，确实byol对augment更加的鲁棒
 - 动量参数的探索：0不行，1也不行，0.99以上比较好
-- ![image-20220114105932393](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220114105932393.png)
+- ![image-20220114105932393](..\images\image-20220114105932393.png)
 
 - ==探索一下target network以及predict layer的作用==
 
@@ -130,9 +130,9 @@ class MLP(nn.Module):
   >
   >    
 
-  ![image-20220114141745111](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220114141745111.png)
+  ![image-20220114141745111](..\images\image-20220114141745111.png)
 
-![image-20220114142536118](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220114142536118.png)
+![image-20220114142536118](..\images\image-20220114142536118.png)
 
 - predictor是防止训练崩溃的关键
 - predictor和target network缺一不可，但如果采用最优的predictor可以去掉target network,那么如何得到最优的predictor,可以提高predictor的学习率。。。

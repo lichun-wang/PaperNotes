@@ -30,11 +30,11 @@ Symmetrization
 - Siamese结构可能是目前这些方法成功的关键
 - stop gradient 操作很重要
 
-![image-20220120160644611](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220120160644611.png)
+![image-20220120160644611](..\images\image-20220120160644611.png)
 
 
 
-![image-20220120164116781](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220120164116781.png)
+![image-20220120164116781](..\images\image-20220120164116781.png)
 
 
 
@@ -48,13 +48,13 @@ Symmetrization
 - encoder shares weights
 - loss: 这个跟byol中的loss是等价的
 
-![image-20220120162851951](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220120162851951.png)
+![image-20220120162851951](..\images\image-20220120162851951.png)
 
 - 本文采用了stopgrad,结果loss就变成了如下：==就是说，只有经过了predictor才会产生梯度，没有经过predictor是不会产生梯度的==
 
   
 
-![image-20220120163522609](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220120163522609.png)
+![image-20220120163522609](..\images\image-20220120163522609.png)
 
 - Baseline setting:
 
@@ -68,7 +68,7 @@ Symmetrization
 
 - 下表对比了，有无stop gradient的效果， 当没有stop-grad的时候，loss快速的到达了-1，输出趋于一致，knn基本失效，说明出现了collapsing，侧面说明了，predictor, BN 等都不是决定collapsing的关键。
 
-![image-20220120170607919](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220120170607919.png)
+![image-20220120170607919](..\images\image-20220120170607919.png)
 
 - predictor的研究：
 
@@ -78,11 +78,11 @@ Symmetrization
   >    to the latest representations, so it is not necessary to force it converge (by reducing lr) before the representations are sufficiently trained。
   > 4. 
 
-  ![image-20220120172240215](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220120172240215.png)
+  ![image-20220120172240215](..\images\image-20220120172240215.png)
 
 - Batch Size 的研究：
 
-  ![image-20220120173855417](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220120173855417.png)
+  ![image-20220120173855417](..\images\image-20220120173855417.png)
 
 - BN
 
@@ -92,11 +92,11 @@ Symmetrization
   >
   > d,在最后的输出也加上bn，效果不行了，我觉得是因为最终的输出参产生了干扰，一般最终的输出都不会加BN
 
-![image-20220120173930420](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220120173930420.png)
+![image-20220120173930420](..\images\image-20220120173930420.png)
 
 - Similarity Function,如果将我们用的相似度判别loss，直接换成plogp这种，crossentropy 的分类loss，结果会掉点
 
-  ![image-20220120174755816](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220120174755816.png)
+  ![image-20220120174755816](..\images\image-20220120174755816.png)
 
   
 
@@ -106,7 +106,7 @@ Symmetrization
 
   
 
-![image-20220120175604205](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220120175604205.png)
+![image-20220120175604205](..\images\image-20220120175604205.png)
 
 
 

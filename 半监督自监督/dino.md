@@ -73,9 +73,9 @@ GitHub : https://github.com/facebookresearch/dino
 
 - 20NN效果表现是比较好的
 
-![image-20220117153852225](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220117153852225.png)
+![image-20220117153852225](..\images\image-20220117153852225.png)
 
-![image-20220117153905167](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220117153905167.png)
+![image-20220117153905167](..\images\image-20220117153905167.png)
 
 ## Main Result
 
@@ -91,46 +91,46 @@ GitHub : https://github.com/facebookresearch/dino
   >
   >    
 
-![image-20220117154958574](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220117154958574.png)
+![image-20220117154958574](..\images\image-20220117154958574.png)
 
 - 在图像检索方面，dino的表现也是很好的
 
 - [cls]不同的head的attention map打印出来，可以发现不同的head会get到不同的信息，如下图：并且，可以发现的是，dino 得到的分割信息会比supervised方法得到的更准确。
 
-  ![image-20220117162302424](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220117162302424.png)
+  ![image-20220117162302424](..\images\image-20220117162302424.png)
 
-![image-20220117162720280](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220117162720280.png)
+![image-20220117162720280](..\images\image-20220117162720280.png)
 
 - transfer learning的效果更好：
 
-![image-20220117163303195](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220117163303195.png)
+![image-20220117163303195](..\images\image-20220117163303195.png)
 
 ## Ablation Study
 
 - 各个组件的作用，可以看到momentum比较重要，ce比较重要，mc 比较重要
 
-![image-20220117163924003](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220117163924003.png)
+![image-20220117163924003](..\images\image-20220117163924003.png)
 
 - 降低patch的大小，可以有效的提高表现，但是带来的后果就是，模型的速度会降低的比较明显，比如8x8到5x5 ，速度会从180->44,降低为原来的1/4
 
-- ![image-20220117164643849](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220117164643849.png)
+- ![image-20220117164643849](..\images\image-20220117164643849.png)
 
 - 不同的teacher更新策略，如果每个epoch更新一下，效果还可以，每个iter更新一下，不收敛，momentum方法，效果最好。下图（b）
 
 - 下图（a）想表达的是，在训练的过程中，teacher的效果一直是要优于student的效果的。这在其他的框架中都没有发现，epoch更新的时候也没有这个效果，作者解释，这可能是由于采用了类似于Polyak-Ruppert average导致的，简单理解就是做模型的ensemble来提升效果。teacher一直比student好自然可以蒸馏出更好的student.
 
-  ![image-20220117165146604](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220117165146604.png)
+  ![image-20220117165146604](..\images\image-20220117165146604.png)
 
 
 
 collapse的研究：
 
-![image-20220117190547839](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220117190547839.png)
+![image-20220117190547839](..\images\image-20220117190547839.png)
 
 - batchsize 对于网络的影响不大，bs=128相比bs=1024只有小幅的下降。
 - byol,moco-v2,的对比分析：
-- ![image-20220117193503017](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220117193503017.png)
+- ![image-20220117193503017](..\images\image-20220117193503017.png)
 
 - head的转变：MLP中使用的是GeLU, vit没有bn,   MLP输出为256，l2norm后，接linear layer，输出是K=65536， ==这里输出的K=65536我觉得应该挺重要的==，待后面探索一下。
 
-  ![image-20220117194211206](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220117194211206.png)
+  ![image-20220117194211206](..\images\image-20220117194211206.png)

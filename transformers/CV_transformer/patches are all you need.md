@@ -19,7 +19,7 @@ github: https://github.com/tmp-iclr/convmixer.
 
 ## Introduction
 
-![image-20211112104115656](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20211112104115656.png)
+![image-20211112104115656](..\..\images\image-20211112104115656.png)
 
 
 
@@ -29,18 +29,18 @@ github: https://github.com/tmp-iclr/convmixer.
 
   
 
-![image-20211112104800666](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20211112104800666.png)
+![image-20211112104800666](..\..\images\image-20211112104800666.png)
 
 - ConvMixer block: 就是用depthwise+pointwise + identity, 经验来看depthwise的kernel size 要大一些。
 
-  ![image-20211112105201384](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20211112105201384.png)
+  ![image-20211112105201384](..\..\images\image-20211112105201384.png)
 
 
 - 结构和代码如下：
 
-![image-20211112105641399](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20211112105641399.png)
+![image-20211112105641399](..\..\images\image-20211112105641399.png)
 
-![image-20211112105809264](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20211112105809264.png)
+![image-20211112105809264](..\..\images\image-20211112105809264.png)
 
 ## Motivation
 
@@ -52,7 +52,7 @@ github: https://github.com/tmp-iclr/convmixer.
 - using randaugment, mixup,cutmix, random erasing, gradient norm clipping
 - use AdamW
 - 实验表明，减少kernel size ,会掉点大约1%，如果采用更小的patches，会取得更好的效果，作者认为更大的batch需要更深的网络。
-- ![image-20211112140503099](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20211112140503099.png)
+- ![image-20211112140503099](..\..\images\image-20211112140503099.png)
 
 ## 附录
 

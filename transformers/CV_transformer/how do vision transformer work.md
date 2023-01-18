@@ -24,11 +24,11 @@
 
 - resnet的loss landscape更陡峭，vit transformer更扁平，极坐标可以看到，transformer是比较平滑的收敛，但是resnet就是比较乱的，同时hession，vit开始存在负值，说明非凸，影响训练。
 
-![image-20220321173559195](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220321173559195.png)
+![image-20220321173559195](..\..\images\image-20220321173559195.png)
 
 
 
-![image-20220322161600127](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220322161600127.png)
+![image-20220322161600127](..\..\images\image-20220322161600127.png)
 
 
 
@@ -42,9 +42,9 @@
 
 
 
-![image-20220322101430111](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220322101430111.png)
+![image-20220322101430111](..\..\images\image-20220322101430111.png)
 
-![image-20220322101351636](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220322101351636.png)
+![image-20220322101351636](..\..\images\image-20220322101351636.png)
 
 * **作者通过向训练中增加噪声，验证了，conv是高频滤波器，MSA是低频滤波器，所以conv对纹理比较在意，而MSA对形状比较在意。**
 
@@ -55,9 +55,9 @@
 
 * 基于上面的分析，设计了alter-resnet-50网络，对小数据集效果更好的网络。作者是从后往前，一点一点替换网络conv为self-attention，一点点提升效果。
 
-![image-20220322113614574](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220322113614574.png)
+![image-20220322113614574](..\..\images\image-20220322113614574.png)
 
-![image-20220322162203599](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220322162203599.png)
+![image-20220322162203599](..\..\images\image-20220322162203599.png)
 
 ---
 

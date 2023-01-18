@@ -1,10 +1,13 @@
+
+
 # PyTorch 数据集随机值的完美实践
+
+
 
 
 来源 | https://zhuanlan.zhihu.com/p/377155682
 
 
-**极市导读**
 
 本文所分析的问题与解决方案将在最近发布的pytorch版本中解决；因此解决所有烦恼的根源是方法，更新pytorch
 
@@ -31,7 +34,7 @@ np.random.seed 会出现问题的原因是，当多处理采用 fork 方式产�
 2. 由特定的seed generator设置
 
 ```
-generator = torch. Generator()
+generator = torch.Generator()
 g.manual_seed(base_seed)
 DataLoader(dataset, ..., generator=generator)
 ```

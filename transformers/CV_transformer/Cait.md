@@ -23,7 +23,7 @@ author: Facebook AI
 - 作者在实验中发现，移除norm采用fix那几个方法并不奏效，反而训练很不稳定，但是把norm加回来训练就稳定多了，所以作者就加回来了，还做了改进，由单个scalar变成了一个对角矩阵。
 - layerscale的参数都设置的比较小，前18层是0.1 ，然后是10e-5,然后24层是10e-6
 
-![image-20211021160222487](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20211021160222487.png)
+![image-20211021160222487](..\..\images\image-20211021160222487.png)
 
 
 
@@ -34,11 +34,11 @@ author: Facebook AI
 - self-attention 跟vit差不多，不过没有了[cls]。
 - class-attention  将patch embedding合成到cls中进行分类。
 
-![image-20211021170138217](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20211021170138217.png)
+![image-20211021170138217](..\..\images\image-20211021170138217.png)
 
 * class-attention是怎么做的呢？主要就是下面这个公式，理解这个公式就可以里，其中 Q是只有xclass的，z是[xclass, xpatch]
 
-  ![image-20211021172133697](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20211021172133697.png)
+  ![image-20211021172133697](..\..\images\image-20211021172133697.png)
 
 * 这里说一下计算$Q*K^T$ 本来是len_q * dim  和  len_k * dim  ,这里的len_q 就变成了1， 最后得到的attention也变成了 1 x dim 
 
@@ -47,7 +47,7 @@ author: Facebook AI
 
 * vit训到18层就训不下去了，24层反而效果变得比较差了，特别是只有imagenet数据的时候。
 * 加了layerscale可以使得训练的更稳定，layer间的差别更小，下图 右边。
-* ![image-20211021180832794](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20211021180832794.png)
+* ![image-20211021180832794](..\..\images\image-20211021180832794.png)
 
 * AdamW + cosine + 5 warmup + weight decay 0.05 
 
@@ -55,6 +55,6 @@ author: Facebook AI
 
 * Deti ->  Cait的优化进程：
 
-  ![image-20211022112141837](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20211022112141837.png)
+  ![image-20211022112141837](..\..\images\image-20211022112141837.png)
 
 - conv时候采用center-crop(256x256中间抠出来224x224)，但是wightman发现其实不crop对于transformer更加的友好，上面的表格中调整crop ratio的比例后，也涨了一点点。

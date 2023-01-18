@@ -63,7 +63,7 @@ AlbertModel(
 )
 ```
 
-![image-20210906171600477](C:\Users\wanglichun\Desktop\TyporaPapers\images\image-20210906171600477.png)
+![image-20210906171600477](..\..\images\image-20210906171600477.png)
 
 
 

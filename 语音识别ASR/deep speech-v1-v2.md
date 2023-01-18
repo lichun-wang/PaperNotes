@@ -10,24 +10,24 @@
 
 ​          训练语料：
 
-<img src="C:\Users\wanglichun\AppData\Roaming\Typora\typora-user-images\image-20210528102534607.png" alt="image-20210528102534607" style="zoom:50%;" />
+<img src="..\images\image-20210528102534607.png" alt="image-20210528102534607" style="zoom:50%;" />
 
 ​           loss: CTC Loss          
 
 ​           语言模型解码过程，beam search：
 
-​                                                   ![image-20210528102633933](C:\Users\wanglichun\AppData\Roaming\Typora\typora-user-images\image-20210528102633933.png)
+​                                                   ![image-20210528102633933](..\images\image-20210528102633933.png)
 
 ​           网络结构图： 前三层是单向RNN，第四层是双向RNN，第五层接受双输入：
 
-<img src="C:\Users\wanglichun\AppData\Roaming\Typora\typora-user-images\image-20210528103652618.png" alt="image-20210528103652618" style="zoom:50%;" />
+<img src="..\images\image-20210528103652618.png" alt="image-20210528103652618" style="zoom:50%;" />
 
 
 # Deep Speech V2
 
 v2是在v1上进行的升级，采用了更大的语料，重新设计了网络结构，引入了CNN在网络头部，一定程度减少了计算量。
 
-![image-20210601103914023](C:\Users\wanglichun\AppData\Roaming\Typora\typora-user-images\image-20210601103914023.png)
+![image-20210601103914023](..\images\image-20210601103914023.png)
 
 引入了Sequence-wise的normalization，但是产生的模型提升效果不明显。
 

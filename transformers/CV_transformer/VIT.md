@@ -27,22 +27,22 @@ Google Brain
 - 引入了[cls]token，==文中说这个是 learnable embedding，这个是咋实现的？看过代码后知道了，其实就是nn.Parameter,构造了一个可学习的参数插入到每张图像patch前面==
 - 引入了postion embedding, 使用的是一维的embedding,（作者实验发现，二维并没有明显的效果）, learnable
 
-![image-20210930100559146](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20210930100559146.png)
+![image-20210930100559146](..\..\images\image-20210930100559146.png)
 
 * hybrid : 除了选择原始的图像进行patch的提取，也可以在cnn得到的feature map上面提取patch，特别的，patch的大小就是1x1(后面的实验部分作者就是用的1x1)
 * finetune问题，通常训练好pre-trained model后，通常在higher resolution上会有更好的效果，可是这里会遇到一个问题，当提高resolution之后，如果依然采用原来的patch的大小，那么seq的长度就会增加，之前训练的pos embedding就失效了，这里作者采用了一个2D插值方法，利用原有的位置进行插值，得到新的位置embedding.
 
-![image-20210930143324226](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20210930143324226.png)
+![image-20210930143324226](..\..\images\image-20210930143324226.png)
 
 ## Experiments
 
 * train setting: batch_size:4096;  adam $\beta_1=0.1,\beta_2=0.999$， dropout applied after ever dense layer
 * 这里设计了3款vit,分别是 base ,large,huge, 可以看到 Huge的优势还是有一些的。
 
-![image-20210930105538209](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20210930105538209.png)
+![image-20210930105538209](..\..\images\image-20210930105538209.png)
 
 * ==那么多大的数据量是需要的呢？==做了个实验，实验都是先pretrained，再在imagenet上面finetune,在imagenet小数据集上面相比conv，transformer不行，随着数据量的增加，transformer的爆发力逐渐发挥出来。
-* ![image-20210930110700342](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20210930110700342.png)
+* ![image-20210930110700342](..\..\images\image-20210930110700342.png)
 
 -  This result reinforces the intuition that the==convolutional inductive bias====  is useful for smaller datasets, but for larger ones, learning the ==relevant patterns== is sufficient,even beneficial. 
 - Scaling study，对于小模型，采用hybrid方式， 实验证明是有优势的，模型大了几乎就相近了。

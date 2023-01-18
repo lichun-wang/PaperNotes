@@ -1,4 +1,6 @@
-# 实践指南 | Pytorch定义网络的几种方法
+
+
+# Pytorch定义网络的几种方法
 
 ## 直接申明式
 
@@ -64,6 +66,8 @@ print(list(net.parameters()))
 # []
 ```
 
+
+
 nn.ModuleList()是可以通过索引进行调用的,如下这个例子利用索引改变了调用的次序：
 
 ```python
@@ -78,7 +82,11 @@ class net3(nn.Module):
         return x
 ```
 
-nn.ModuleList()是没有前向函数的，需要自己实现前向函数。而下面的nn.Sequential()是实现了前向的。
+
+
+==nn.ModuleList()是没有前向函数的，需要自己实现前向函数。而下面的nn.Sequential()是实现了前向的。==
+
+
 
 ## nn.Sequential()
 
@@ -96,7 +104,7 @@ class Net(nn.Module):
 
 ### OrderedDict
 
-当然nn.Sequential()还有另外一种用法OrderedDict
+当然nn.Sequential()还有另外一种用法OrderedDict(有序字典)
 
 ```python
 class MultiLayerNN5(nn.Module):

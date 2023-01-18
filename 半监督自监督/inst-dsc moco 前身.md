@@ -50,21 +50,21 @@
 
 ## Approach
 
-![image-20220105144459064](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220105144459064.png)
+![image-20220105144459064](..\images\image-20220105144459064.png)
 
 ### Non-Parametric Softmax Classifier
 
 如果是参数的分类器，那么公示是这样的：这里的w可以理解为fc层的参数，这里的问题是，这样拿到的类别的概率，其实不完全是实例间的比较，因为乘了w相当于做了投影。
 
-![image-20220105144912252](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220105144912252.png)
+![image-20220105144912252](..\images\image-20220105144912252.png)
 
 那无参数的分类器是什么样的呢？
 
-![image-20220105145058830](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220105145058830.png)
+![image-20220105145058830](..\images\image-20220105145058830.png)
 
 简单来说，就是v要跟所有的向量做内积，算相似度，然后 ||v|| = 1, 通过L2-normalization做的归一化， $$\tau$$是温度系数，所以目标就是最大化i=0-n的概率的乘积，或者最小化-log，即loss如下所示：
 
-![image-20220105145705425](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220105145705425.png)
+![image-20220105145705425](..\images\image-20220105145705425.png)
 
 ### Learning with a memory bank
 
@@ -86,11 +86,11 @@
 
 - nce算起来还是挺复杂的，文章里介绍的挺数学的，总之，最后的loss变成了下面这样，后面的对vi做的平方项是一个正则，就是由于bank更新的太慢了，所以这里加了前后两个bank的diff作为loss的一部分。
 
-  ![image-20220105160659698](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220105160659698.png)
+  ![image-20220105160659698](..\images\image-20220105160659698.png)
   
 - 可以看到，加入了后面的正则项后，训练变得更稳定了。
   
-  ![image-20220106150440850](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220106150440850.png)
+  ![image-20220106150440850](..\images\image-20220106150440850.png)
 
 ### Weighted k-Nearest Neighbor Classifier
 
@@ -100,7 +100,7 @@
 
   
 
-![image-20220105161154282](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220105161154282.png)
+![image-20220105161154282](..\images\image-20220105161154282.png)
 
 ## Exp
 
@@ -110,25 +110,25 @@
 
 实验对比了训练SVM和knn的实验效果：如下
 
-![image-20220105164205419](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220105164205419.png)
+![image-20220105164205419](..\images\image-20220105164205419.png)
 
 #### 二、图像分类
 
 - 前几列是采用SVM进行的测试
 
-![image-20220105174000246](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220105174000246.png)
+![image-20220105174000246](..\images\image-20220105174000246.png)
 
 * 1.28M的图像，每张提取128dim，消耗600M,搜索时间大概20ms Titan X GPU
 
 - 特征的泛化性： 在imagenet上训练，然后在Place上进行测试，测试结果如下：
-- ![image-20220105175112978](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220105175112978.png)
+- ![image-20220105175112978](..\images\image-20220105175112978.png)
 
 - 128dim挺好，256dim下降了
-- ![image-20220105183033749](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220105183033749.png)
+- ![image-20220105183033749](..\images\image-20220105183033749.png)
 - 
 
 ### semi supervised
 
 将imagenet的一部分标签拿出来，其余的部分作为无标签处理，来验证semi supervised的效果，如下：
 
-![image-20220105183357358](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220105183357358.png)
+![image-20220105183357358](..\images\image-20220105183357358.png)

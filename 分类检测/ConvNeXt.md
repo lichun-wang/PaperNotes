@@ -10,4 +10,4 @@
 
 
 
-![image-20220210164259194](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220210164259194.png)
+![image-20220210164259194](..\images\image-20220210164259194.png)

@@ -19,5 +19,13 @@ nvidia 提供的 tensorrt 的docker 下载链接：
 - https://docs.nvidia.com/deeplearning/tensorrt/container-release-notes/rel_21-05.html#rel_21-05
 - nvcr.io/nvidia/tensorrt:xxxx
 
+nvidia提供的pytorch的docker下载链接：
+
+- https://docs.nvidia.com/deeplearning/frameworks/pytorch-release-notes/running.html#running
+
+- ```shell
+  docker pull nvcr.io/nvidia/pytorch:22.11-py3
+  ```
+
 
 

@@ -62,8 +62,8 @@ Author:中国科学院大学，东南大学，lenovo ai lab
 
 
 
-![image-20211117191002444](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20211117191002444.png)
+![image-20211117191002444](..\images\image-20211117191002444.png)
 
 
 
-![image-20211117191617139](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20211117191617139.png)
+![image-20211117191617139](..\images\image-20211117191617139.png)

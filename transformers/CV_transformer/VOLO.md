@@ -18,7 +18,7 @@ Github: https://github.com/sail-sg/volo
 - no extra data,  imagenet, 87.1% acc
 - downstream tasks
 
-![image-20211118104506819](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20211118104506819.png)
+![image-20211118104506819](..\..\images\image-20211118104506819.png)
 
 ## Introduction
 
@@ -31,7 +31,7 @@ Github: https://github.com/sail-sg/volo
 
 - Outlooker attention
 
-  ![image-20211118111433804](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20211118111433804.png)
+  ![image-20211118111433804](..\..\images\image-20211118111433804.png)
 
 ### Outlook Attention
 
@@ -47,9 +47,9 @@ Github: https://github.com/sail-sg/volo
   > 3. 然后在torch.fold回去
   > 4. 这也就对应了attention的名字，**outlooker**,
   >
-  > ![image-20211118174024858](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20211118174024858.png)
+  > ![image-20211118174024858](..\..\images\image-20211118174024858.png)
   >
-  > ![image-20211118174258054](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20211118174258054.png)
+  > ![image-20211118174258054](..\..\images\image-20211118174258054.png)
   > 
 
 ### Multi-Head Outlook Attention
@@ -94,7 +94,7 @@ Github: https://github.com/sail-sg/volo
 >
 > 在大分辨率finetune， lr = 5e-6,  weight decay=1e-8  , 30 epoch
 >
-> ![image-20211118193738422](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20211118193738422.png)
+> ![image-20211118193738422](..\..\images\image-20211118193738422.png)
 
 
 

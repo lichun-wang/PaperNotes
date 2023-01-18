@@ -57,7 +57,7 @@
 
 ### aug的提升效果：
 
-![image-20210922111546338](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20210922111546338.png)
+![image-20210922111546338](..\images\image-20210922111546338.png)
 
   ## Other backbone
 
@@ -65,11 +65,11 @@
 
 - use cspnet , silu activation , pan head 
 
-![image-20210922114054103](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20210922114054103.png)
+![image-20210922114054103](..\images\image-20210922114054103.png)
 
 ### vs tiny, nano detector
 
-![image-20210922114234135](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20210922114234135.png)
+![image-20210922114234135](..\images\image-20210922114234135.png)
 
 ### model size and data augmentation
 

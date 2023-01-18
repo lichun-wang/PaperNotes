@@ -33,7 +33,7 @@ github: https://github.com/facebookresearch/deit
 - distillation token: 本文创新点：Deit在最后面插入了一个distillation token,然后利用这个token来进行蒸馏loss的计算, 这个token也是learnable的
 - inference阶段，利用这两个token的预测结果进行融合。
 - ==这个启发倒是可以在我们的项目中试试看，这样的多分支蒸馏的效果还真没==
-- ![image-20211021110927626](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20211021110927626.png)
+- ![image-20211021110927626](..\..\images\image-20211021110927626.png)
 
 
 
@@ -42,7 +42,7 @@ github: https://github.com/facebookresearch/deit
 * convnet teacher 比 transformer teacher 更好， default teacher RegNetY-16GF
 * 下表介绍了不同的蒸馏策略带来的结果：可以看到只使用hard label 和只使用teacher label还是有一定差距的，当然hard+ teacher的效果是最好的，==但是提点好像也并没有很明显。==
 
-![image-20211021113949193](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20211021113949193.png)
+![image-20211021113949193](..\..\images\image-20211021113949193.png)
 
 - ==finetune:== 小数据集测试cifar-10, 重头开训，训练了7200epoch,  rescale to 224x224,取得了不错的效果，不过还是没有直接finetune的结果高。==说明预训练模型还是有效的。==
 
@@ -52,7 +52,7 @@ github: https://github.com/facebookresearch/deit
   >
   > train at 224 and finetune at 3
 
-![image-20211021121904206](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20211021121904206.png)
+![image-20211021121904206](..\..\images\image-20211021121904206.png)
 
 ## 总结
 

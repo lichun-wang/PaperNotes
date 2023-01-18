@@ -29,7 +29,7 @@
 
 ### Architecture of Transformer
 
-![image-20210607172154844](C:\Users\wanglichun\AppData\Roaming\Typora\typora-user-images\image-20210607172154844.png)
+![image-20210607172154844](..\images\image-20210607172154844.png)
 
 ### Positional Embedding
 
@@ -66,7 +66,7 @@
 * 对比了3种 position embedding的效果
 * conv： 2 vgg blocks，这个效果最好，==这个具体的方式，需要探究一下，论文中没有详细讲清楚==
 
-![image-20210607193050018](C:\Users\wanglichun\AppData\Roaming\Typora\typora-user-images\image-20210607193050018.png)
+![image-20210607193050018](..\images\image-20210607193050018.png)
 
 ### Transformer vs. BLSTM
 
@@ -75,7 +75,7 @@
 * 网络太深训练不起来，加了这个能训练起来了
 * 
 
-![image-20210607195721882](C:\Users\wanglichun\AppData\Roaming\Typora\typora-user-images\image-20210607195721882.png)
+![image-20210607195721882](..\images\image-20210607195721882.png)
 
 ### Limited Right Context
 

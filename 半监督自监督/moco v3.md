@@ -51,7 +51,7 @@ Github  :  https://github.com/facebookresearch/moco-v3
 
   batch size的实验中发现，在batch size = 1024或者2048的时候，训练比较稳定，并且在稳步的提升，但是当继续扩大到4096之后，会发现，出现了严重的波动，并且指标没有再进一步提升了，如下：这里波动取的是 kNN acc，没有使用训练的acc,因为波动不容易觉察。
 
-  ![image-20220107163035936](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220107163035936.png)
+  ![image-20220107163035936](..\images\image-20220107163035936.png)
 
 - lr
 
@@ -59,13 +59,13 @@ Github  :  https://github.com/facebookresearch/moco-v3
 
   这里可以看出，当lr比较小的时候（0.5e-4），训练是比较稳定的，但是容易欠拟合，linear acc只有70.4，当增大lr的时候，比如当lr=1e-4，出现了波动，当时拟合的比价好 ，linear acc = 72.2%,继续增加就有变差了。
 
-  ![image-20220107163439073](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220107163439073.png)
+  ![image-20220107163439073](..\images\image-20220107163439073.png)
 
 - optimizer
 
   vit默认使用adamw， 最近也有一些self-supervised 算法，使用LARS optimizer 来适应大的batch size，我们使用了LAMB optimizer(一种针对adamw适配LARS的优化器)
 
-  ![image-20220107164307871](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220107164307871.png)
+  ![image-20220107164307871](..\images\image-20220107164307871.png)
 
   
 
@@ -81,9 +81,9 @@ Github  :  https://github.com/facebookresearch/moco-v3
 
 总结： 这个发现就很奇妙，说明patch的映射层是没有用的，固定随机的映射也是可以的，深度学习就是这么的奇妙。。。并且作者也说，这个方法缓解了这个问题，但是当lr变得更大的时候，依然会有这个问题，所以还需要后面进一步的探索根本的解决方式。
 
-![image-20220107173533692](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220107173533692.png)
+![image-20220107173533692](..\images\image-20220107173533692.png)
 
-![image-20220107174009400](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220107174009400.png)
+![image-20220107174009400](..\images\image-20220107174009400.png)
 
 ## Implementation Details
 
@@ -99,13 +99,13 @@ Github  :  https://github.com/facebookresearch/moco-v3
 
 - 不同的自监督方法对于 resnet50 和 vit的效果的对比：可以看到，moco v3 和 simclr 对于vit是友好的，swav 和 BYOL vit和resnet相差不大。
 
-  ![image-20220110162040074](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220110162040074.png)
+  ![image-20220110162040074](..\images\image-20220110162040074.png)
 
 - Position Embedding:
 
   没有position embedding，才掉点了1.6%，说明position embedding的作用没有那么大嘛，换句话说，从一堆patch中模型就能学到类别，说明具有很好的排列不变性。但是也说明其没有很好的利用位置信息
 
-  ![image-20220110164117388](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220110164117388.png)
+  ![image-20220110164117388](..\images\image-20220110164117388.png)
 
 - class token:
 
@@ -113,25 +113,25 @@ Github  :  https://github.com/facebookresearch/moco-v3
 
   
 
-  ![image-20220110164840343](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220110164840343.png)
+  ![image-20220110164840343](..\images\image-20220110164840343.png)
 
 * BN in MLP head:
 
   vit中是没有BN的，所有的BN都在MLP head中，作用如何呢？下面结果说明了，没有bn也可以很好的工作，有何合适的bn可以起到锦上添花的作用。
 
-  ![image-20220110173507815](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220110173507815.png)
+  ![image-20220110173507815](..\images\image-20220110173507815.png)
 
 - Prediction head:
 
   prediction head 是在BYOL论文中提到的，这里对比了有何没有的效果
 
-  ![image-20220110174159050](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220110174159050.png)
+  ![image-20220110174159050](..\images\image-20220110174159050.png)
 
 - momentum encoder:
 
   m= 0.99效果最好，如果m=0 就是simclr了，moco v3没有再用queue了。说明即使不用queue了，采用momentum也是有一定效果的。
 
-![image-20220110174426644](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220110174426644.png)
+![image-20220110174426644](..\images\image-20220110174426644.png)
 
 - patch越小一般 效果会越好， sequence 的长度会增加。
 - 在迁移学习上的表现，imagenet采用moco v3预训练的vit,会比直接有监督预训练的迁移效果好，更不容易过拟合

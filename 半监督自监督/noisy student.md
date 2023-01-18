@@ -16,7 +16,7 @@
 
 - 算法流程如下：
 
-![image-20210922152639259](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20210922152639259.png)
+![image-20210922152639259](..\images\image-20210922152639259.png)
 
 
 
@@ -27,7 +27,7 @@
 - ==resolution discrepancy==; 先在小分辨率图像上面训练350个epoch，然后使用大分辨率图像finetune 1.5epoch，不使用augment  同时 fix 浅层layer。
 - iterative training: 作者迭代了3次， efficientnet-b7 -> efficientnet-l2 -> efficientnet-l2 
 - ==实验证明，即使不使用iterative training；只是noisy train 也是会有效果的==
-- ![image-20210922190823302](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20210922190823302.png)
+- ![image-20210922190823302](..\images\image-20210922190823302.png)
 
 - 实验证明，==加了noisy training方法后，模型会更加的鲁棒。==
 - 实验证明，即使使用了==FGSM==这样的攻击技术，依然具有较好的鲁棒性。
@@ -37,12 +37,12 @@
 - ==noisy的加入对于student效果的提升很重要==，作者把noisy全部去掉后，就没有啥提升了。
 - 训练teacher的时候，加入noisy，并没有带来效果的提升。
 
-![image-20210922192906353](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20210922192906353.png)
+![image-20210922192906353](..\images\image-20210922192906353.png)
 
 * 多轮迭代的效果：其中3，把unlabeled batch 和labeled batch 的比例加大了。
 * 
 
-![image-20210922193401460](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20210922193401460.png)
+![image-20210922193401460](..\images\image-20210922193401460.png)
 
 ### ==一些经验性实验结论==
 

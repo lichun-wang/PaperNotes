@@ -27,23 +27,23 @@
 
 
 
-![image-20210603165502465](C:\Users\wanglichun\AppData\Roaming\Typora\typora-user-images\image-20210603165502465.png)
+![image-20210603165502465](..\images\image-20210603165502465.png)
 
 * $y_{1:u-1}^*$ is the gt of the previsou characters
 
-![image-20210603165646541](C:\Users\wanglichun\AppData\Roaming\Typora\typora-user-images\image-20210603165646541.png)
+![image-20210603165646541](..\images\image-20210603165646541.png)
 
 ## Joint CTC-attention
 
 * multi task
 * 结构如下：
 
-![image-20210603171734496](C:\Users\wanglichun\AppData\Roaming\Typora\typora-user-images\image-20210603171734496.png)
+![image-20210603171734496](..\images\image-20210603171734496.png)
 
 
 
 * 加入CTC可以增强alignment ， 并且加速网络训练
-* ![image-20210603173459316](C:\Users\wanglichun\AppData\Roaming\Typora\typora-user-images\image-20210603173459316.png)
+* ![image-20210603173459316](..\images\image-20210603173459316.png)
 
 ## Experiments
 
@@ -52,6 +52,6 @@
 * encoder: 4-layer BLSTM 320cells
 * decoder: 1-layer LSTM 320cells
 
-![image-20210603174031868](C:\Users\wanglichun\AppData\Roaming\Typora\typora-user-images\image-20210603174031868.png)
+![image-20210603174031868](..\images\image-20210603174031868.png)
 
 * ctc可以加速训练，调大ctc loss的比重，训练效率明显提升。

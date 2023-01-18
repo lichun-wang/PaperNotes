@@ -26,11 +26,11 @@
 
 * embedding size: E , 128效果较好。
 
-  ![image-20210827143705772](..\images\image-20210827143705772.png)
+  ![image-20210827143705772](..\..\images\image-20210827143705772.png)
 
 * cross layer parameter sharing。
 
   事实证明，share attention的效果是最好的，但是相差也没有很大，所以albert默认是参数全部共享的。
 
-  ![image-20210827144640102](..\images\image-20210827144640102.png)
+  ![image-20210827144640102](..\..\images\image-20210827144640102.png)
 

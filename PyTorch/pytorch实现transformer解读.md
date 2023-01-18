@@ -1,3 +1,5 @@
+
+
 # Transformer代码完全解读
 
 
@@ -223,7 +225,7 @@ def attention(query, key, value, mask=None, dropout=None):
     scores = torch.matmul(query, key.transpose(-2, -1)) / math.sqrt(d_k)  
       
     #接着判断是否使用掩码张量  
-    if mask isnotNone:  
+    if mask is not None:  
         #使用tensor的masked_fill方法，将掩码张量和scores张量每个位置一一比较，如果掩码张量则对应的scores张量用-1e9这个置来替换  
         scores = scores.masked_fill(mask == 0, -1e9)  
           
@@ -617,3 +619,18 @@ tensor([[ 2,  3,  4,  5,  6,  7,  8,  9, 10]], device='cuda:0')
 
 本次我们介绍了Transformer的基本原理，并且由外向内逐步拆解出每个模块进行了原理和代码的讲解，最后通过一个玩具级的demo实践了Transformer的训练和推理流程。希望通过这些内容，能够让初学者对Transformer有了更清晰的认知。本文参考：http://nlp.seas.harvard.edu/2018/04/03/attention.html
 
+
+
+
+
+## 还有一些比较好的解读
+
+这个链接讲的很详细： https://blog.csdn.net/zhaojc1995/article/details/109276945
+
+
+
+## 一些反思
+
+#### 2023.01.18
+
+inference的时候，decoder还是需要mask的，mask的值依然是下三角矩阵，为什么需要mask呢？是因为模型的输入是 [batch，len， dim], 输出是[batch, len, target_voc_len], 所以是会每个词预测一个输出，当第一个词输出之后，第一个与第二个词拼接送入，第一个词又会重新预测了，没有mask，会导致，计算attention的时候，第一个词与第二个词也计算attention，这可能会导致第一个词变掉，所以为了保证前序的输出一致性，infer的时候，依然采用mask

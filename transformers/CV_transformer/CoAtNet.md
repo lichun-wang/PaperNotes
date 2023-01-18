@@ -38,7 +38,7 @@ Zihang Dai
 
 * 基于上面的分析，很自然的想法就是如下的结合：$w_{i-1}$是一个常数（==咋算的后面附录A.1详述==）
 
-  ![image-20210928114232584](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20210928114232584.png)
+  ![image-20210928114232584](..\..\images\image-20210928114232584.png)
 
 ### Vertical Layout Design
 
@@ -66,11 +66,11 @@ Zihang Dai
 
 * 加入attention的作用
 
-![image-20210929143259557](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20210929143259557.png)
+![image-20210929143259557](..\..\images\image-20210929143259557.png)
 
 ## model Details
 
-![image-20210929143943118](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20210929143943118.png)
+![image-20210929143943118](..\..\images\image-20210929143943118.png)
 
 ## 补充
 

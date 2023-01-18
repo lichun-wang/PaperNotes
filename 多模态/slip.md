@@ -14,13 +14,13 @@ GitHub :  https://github.com/facebookresearch/SLIP
 
 ​        思想就是，我们在图像做自监督对比学习的时候，往往没有利用亿级别的数据，因为没有证据表明对比学习是scale well的，这里从moco也可以看出，多了100倍的数据，但是效果却并没有得到多少提升。但是clip的训练是需要大量数据的，那么，图像对比学习与图像文本对的对比学习，是否是相互互补的呢？
 
-![image-20220315164956796](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220315164956796.png)
+![image-20220315164956796](..\images\image-20220315164956796.png)
 
-![image-20220315202438591](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220315202438591.png)
+![image-20220315202438591](..\images\image-20220315202438591.png)
 
 ### 确实是有促进作用的
 
-![image-20220315194512918](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220315194512918.png)
+![image-20220315194512918](..\images\image-20220315194512918.png)
 
 ### finetune的时候，模型scale影响不是特别的大，当然也会提一些，linear probing的时候，往往会有更大的提升。
 

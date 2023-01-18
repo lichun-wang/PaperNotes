@@ -44,7 +44,7 @@
 - 这里研究一下在相似计算量的情况下，将conv与conv嫁接到一起
 - 嫁接ResNet-50 和 DeiT-Small, 去ResNet的头部和Deit的后部， conv先到14x14，然后接Deit，中间加了pooling层，position embedding加载了Deit上面。
 - 结果如下，发现嫁接最好的是2个resnet stage,6层transformer;相比存的resnet和纯的deit效果都要好一些。
-- ![image-20211105142246346](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20211105142246346.png)
+- ![image-20211105142246346](..\..\images\image-20211105142246346.png)
 - 并且发现，训练的时候，前期更像是conv 后期更像是transformer
 
 ## Model
@@ -53,7 +53,7 @@
 
 - 大火箭结构
 
-![image-20211105145537787](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20211105145537787.png)
+![image-20211105145537787](..\..\images\image-20211105145537787.png)
 
 ###   Components
 
@@ -66,11 +66,11 @@
 - Smaller keys: 限制了K和Q的大小之后，可以减少$QK^T$的时间
 - Attention activation: Hardwish
 
-![image-20211108104934890](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20211108104934890.png)
+![image-20211108104934890](..\..\images\image-20211108104934890.png)
 
 
 
-![image-20211108114104779](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20211108114104779.png)
+![image-20211108114104779](..\..\images\image-20211108114104779.png)
 
 
 
@@ -82,9 +82,9 @@
 
 - 对比效果，比efficientnet要快很多：结果一目了然。
 
-  ![image-20211108114130584](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20211108114130584.png)
+  ![image-20211108114130584](..\..\images\image-20211108114130584.png)
 
 * 消融实验，到底增加的哪个模块的作用最大呢？
 
-  ![image-20211108142512086](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20211108142512086.png)
+  ![image-20211108142512086](..\..\images\image-20211108142512086.png)
 

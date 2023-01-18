@@ -82,6 +82,10 @@ torch.full_like()
 
 一旦注册，这些值就可以在forward函数中访问，就像其他模块的属性一样。
 
+
+
+**但是注意：这么看来，register buffer与nn.Parameter很像，但区别很大。register buffer注册的变量，是不参加反向传播的，这是与nn.Parameter()最大的区别，但是register buffer也是会保存到orderedDict中的，所以也是能把参数保存下来的，所以总结就是：模型中需要进行更新的参数注册为Parameter，不需要进行更新的参数注册为buffer。**
+
 ```
 from torch import nn
 import torch

@@ -2,7 +2,13 @@
 
 
 
-==基本的读取流程==
+# pytorch 数据读取方法
+
+
+
+
+
+## 基本的读取流程
 
 ```python
 # 创建Dateset(可以自定义)
@@ -17,7 +23,7 @@
 
 
 
-==dataset的重写方法==
+## dataset的重写方法
 
 ```python
 
@@ -37,7 +43,9 @@ def __init__(self):
         return0
 ```
 
-==举个例子：==
+
+
+举个例子：
 
 ```python
 class FoodDataset(Dataset):
@@ -96,6 +104,8 @@ train_paths, train_labels = get_paths_labels(os.path.join(args.dataset_dir, 'tra
 train_set = FoodDataset(train_paths, train_labels, mode='eval')
 ```
 
+
+
 增加transform的方法：
 
 ```python
@@ -112,4 +122,6 @@ class cv2Resize(object):
         return self.__class__.__name__ + '()'
 
 ```
+
+
 

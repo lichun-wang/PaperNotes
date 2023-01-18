@@ -23,7 +23,7 @@ github: https://github.com/microsoft/unilm/tree/master/beit
 - 作者在2个任务做了下游的实验，分别是分类和分割
 - 不仅预训练表现好，在收敛速度和稳定性方面也有一定的改善
 
-![image-20211102192100684](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20211102192100684.png)
+![image-20211102192100684](..\..\images\image-20211102192100684.png)
 
 ## Methods
 
@@ -46,7 +46,7 @@ github: https://github.com/microsoft/unilm/tree/master/beit
 - random mask some percentage of image patches, 40%
 - masked patches with a learnable embedding
 - blockwise masking , 就是每次mask一块block，我理解就是避免随机带来的太分散了。
-- ![image-20211102200325856](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20211102200325856.png)
+- ![image-20211102200325856](..\..\images\image-20211102200325856.png)
 
 
 
@@ -75,7 +75,7 @@ github: https://github.com/microsoft/unilm/tree/master/beit
 
 - 使用average pooling, ==这里遗留一个问题，就是embedding是怎么做的，然后average是作用在哪里的，需要看代码==，公式是这样的：W是DxC的
 
-  ![image-20211103192452433](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20211103192452433.png)
+  ![image-20211103192452433](..\..\images\image-20211103192452433.png)
 
   embedding如下： nn.Conv2d(in_chans, embed_dim, kernel_size=patch_size, stride=patch_size)
 
@@ -113,21 +113,21 @@ github: https://github.com/microsoft/unilm/tree/master/beit
   - 有一点记录一下，在224尺寸finetune后，在384尺寸继续finetune了10个epoch，结果又提高了1个点+
   - *scaling up to larger size*:  vit384 变成 vit_L 384后，变得worse了，**说明数据不够了**
   - [ ] 下面这个小图画的挺好。
-  - [ ] ![image-20211104161538446](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20211104161538446.png)
+  - [ ] ![image-20211104161538446](..\..\images\image-20211104161538446.png)
 
   
 
   ## 附录
 
-  ![image-20211104111741894](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20211104111741894.png)
+  ![image-20211104111741894](..\..\images\image-20211104111741894.png)
 
   
 
   
 
-  ![image-20211104111818699](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20211104111818699.png)
+  ![image-20211104111818699](..\..\images\image-20211104111818699.png)
 
   
 
-![image-20211104111830969](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20211104111830969.png)
+![image-20211104111830969](..\..\images\image-20211104111830969.png)
 

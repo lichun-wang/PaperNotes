@@ -23,13 +23,13 @@ Author : Liu Ze, Hu Han
 
 * swin transformer 分层就是最开始是小尺寸的patch,然后合并相邻的patch使得patch的尺寸变大。
 
-  ![image-20211019173109571](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20211019173109571.png)
+  ![image-20211019173109571](..\..\images\image-20211019173109571.png)
 
 * self-attention是在windows中计算的，一个window中包含的patch的数量是固定的。
 
 * swin transformer的一个最大的创新点是 shift window，
 
-* ![image-20211018193249301](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20211018193249301.png)
+* ![image-20211018193249301](..\..\images\image-20211018193249301.png)
 
 ## Relation
 
@@ -44,7 +44,7 @@ Author : Liu Ze, Hu Han
 * 以224为例子，每张图像提取56x56个patch
 * hierarchical representation: 通过patch merging layer, 将2x2的相邻patch进行concat合并,然后通过linear 映射将4C的维度降到2C
 
-![image-20211019150052112](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20211019150052112.png)
+![image-20211019150052112](..\..\images\image-20211019150052112.png)
 
 - multi-head-att的不同，主要是swin引入了shift window的思想，其他基本都是相同的。
 
@@ -52,16 +52,16 @@ Author : Liu Ze, Hu Han
 
 * 如果不使用窗口，使用全局的attention,对于密集型的预测，计算量会比较大。如下公式是使用window后的计算结果对比，不使用window，跟hw是平方关系，使用window后跟hw是线性关系。
 
-![image-20211019175254915](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20211019175254915.png)
+![image-20211019175254915](..\..\images\image-20211019175254915.png)
 
 * swin选择在windows中计算self-attention 每个windows包含多个patches.
 * 但是在window中计算attention也存在一个问题，就是缺乏window间的交互，所以作者提出了如下的shift window方法。
 * 但是上面的方法依然存在问题，在window shift之后，window的数量会增加，因为出现了不满足窗口大小的的windows. 这里作者提出了cyclic-shifting 方法。如下图，函数就是==torch.roll实现==，这样在计算atten的时候，将移动的地方mask掉就可以了，不影响计算量。 ==shift是交替进行的，这里如果我没有理解错，就是shift windows内patch数量的一半，win内patch的数量默认为7，这样随着层数加深的merge操作，shift的越来越多，可以理解为感受野越来越大==
 * 在代码中，这种交互在不同的block中是交替进行的。
 
-![image-20211019153516460](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20211019153516460.png)
+![image-20211019153516460](..\..\images\image-20211019153516460.png)
 
-![image-20211019154534335](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20211019154534335.png)
+![image-20211019154534335](..\..\images\image-20211019154534335.png)
 
 - 本文也是因为使用了分层操作，使得一些密集操作可以实现，为啥可以实现呢？因为通过分层合并，patch的数量有效的减少了，计算量也就有效的减少了。
 
@@ -95,7 +95,7 @@ atte.shape = (64, 3, 49, 49)
 
 shift用 torch.roll实现
 
-![img](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\clipboard.png)
+![img](..\..\images\clipboard.png)
 
 https://zhuanlan.zhihu.com/p/367111046
 

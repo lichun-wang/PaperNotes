@@ -25,15 +25,15 @@
 
 * 后一个token的产生依赖于前面的token的概率，如下图公式
 
-<img src="C:\Users\wanglichun\AppData\Roaming\Typora\typora-user-images\image-20210603101442695.png" alt="image-20210603101442695" style="zoom:80%;" />
+<img src="..\images\image-20210603101442695.png" alt="image-20210603101442695" style="zoom:80%;" />
 
 ### CTC
 
 * $\beta_{-1}(Y)$ 是所有可能的对其方式， CTC在所有token + blank
 
-<img src="C:\Users\wanglichun\AppData\Roaming\Typora\typora-user-images\image-20210603101718727.png" alt="image-20210603101718727" style="zoom:80%;" />
+<img src="..\images\image-20210603101718727.png" alt="image-20210603101718727" style="zoom:80%;" />
 
-![image-20210603105443977](C:\Users\wanglichun\AppData\Roaming\Typora\typora-user-images\image-20210603105443977.png)
+![image-20210603105443977](..\images\image-20210603105443977.png)
 
 ### Joint CTC-CMLM non-autoregressive ASR
 
@@ -45,7 +45,7 @@
 
 * 联合训练的loss:
 
-  ![image-20210603111623971](C:\Users\wanglichun\AppData\Roaming\Typora\typora-user-images\image-20210603111623971.png)
+  ![image-20210603111623971](..\images\image-20210603111623971.png)
 
 ### Mask CTC decoding
 
@@ -55,7 +55,7 @@
 
 * 最终我们怎么做的呢？使用“greedy” CTC得到初始结果，然后利用cmlm decoder进行纠正，cmlm输入的是根据CTC的结果，对低分进行mask
 
-  <img src="C:\Users\wanglichun\AppData\Roaming\Typora\typora-user-images\image-20210603114600861.png" alt="image-20210603114600861" style="zoom:50%;" />
+  <img src="..\images\image-20210603114600861.png" alt="image-20210603114600861" style="zoom:50%;" />
 
   
 
@@ -76,7 +76,7 @@
 * ==缺点：mask-ctc由于在进行MLM的时候，长度固定的，所以不能进行增加和删除操作，只能修改操作。==
 * 从下表可以看出，mask-ctc其实效果并没有提升，但是速度却有很大的进步。
 
-<img src="C:\Users\wanglichun\AppData\Roaming\Typora\typora-user-images\image-20210603140534978.png" alt="image-20210603140534978" style="zoom:50%;" />
+<img src="..\images\image-20210603140534978.png" alt="image-20210603140534978" style="zoom:50%;" />
 
 
 

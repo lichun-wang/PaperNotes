@@ -25,7 +25,7 @@ https://github.com/facebookresearch/moco
 - 本文提出方法如下图
 - encoder，默认就是resnet50结构，将最后的fc的num_classes 设置为特征维度（128）即可。
 
-![image-20211109162238989](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20211109162238989.png)
+![image-20211109162238989](..\images\image-20211109162238989.png)
 
 ## Related Work
 
@@ -38,7 +38,7 @@ https://github.com/facebookresearch/moco
 
 * **相似度的度量用点积**，所以本文的对正负样本相似度的度量的loss函数如下：t是温度系数。简单点看，就是在k+1维的softmax-based classifier中，把q预测成k+的概率，**infoNCE loss ：**
 
-  ![image-20211109164140087](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20211109164140087.png)
+  ![image-20211109164140087](..\images\image-20211109164140087.png)
 
 - query representation 可以是$q=f_q(x^q)$ 输入的可以是image 也可以是patch 也可以是 patches， **两个encoder可以是相同的，可以是共享的，也可以是不同的。**
 
@@ -50,7 +50,7 @@ https://github.com/facebookresearch/moco
 - 弄了个队列，来扩大字典的容量，新数据进队列，outdate数据出队列。
 - 用队列可以扩大字典量，但是却限制了key encoder的更新,那怎么办？一个简单的解决方式是，直接copy query encoder to key encoder，但实验显示效果不好，可能是key encoder更新太快了，破坏了连续性。
 - 本文是怎么干的呢？主要问题还是让key encoder更新的慢一点，所以就采用了动量的方式，每次梯度只更新query encoder，key encoder通过query的更新进行计算，公式如下，并且实验证明，动量越大，效果越好，e.g. m=0.999比m=0.9要好，说明更新的越慢越好。
-- ![image-20211109174727800](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20211109174727800.png)
+- ![image-20211109174727800](..\images\image-20211109174727800.png)
 - 该方法的好处，1.可以使用大量的数据，亿级别也不在话下，2.保证了更新的连续性。
 
 ### Pretext Task
@@ -69,7 +69,7 @@ https://github.com/facebookresearch/moco
 
 ### 伪代码
 
-![image-20211109194215614](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20211109194215614.png)
+![image-20211109194215614](..\images\image-20211109194215614.png)
 
 ## Exp
 
@@ -81,11 +81,11 @@ https://github.com/facebookresearch/moco
 
   
 
-![image-20220106164730887](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220106164730887.png)
+![image-20220106164730887](..\images\image-20220106164730887.png)
 
 - 还有一个点是，momentum取多少合适呢？结果如下，可以看到，如果momentum=0，就代表完全更新，结果就是训不起来了震荡的比较厉害，但等于0不就约等于是memory bank了吗？为什么训不起来了呢，是不是参数没调好。。。
 
-  ![image-20220106164946209](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220106164946209.png)
+  ![image-20220106164946209](..\images\image-20220106164946209.png)
 
 
 
@@ -145,23 +145,23 @@ moco v2 主要是借鉴里simclr的augment以及加了非线性头的思想，�
 
 - moco的优势：相比simclr，不需要大的batch size 也能得到大量的负样本，使得即使没有大量gpu，也能训练。 
 
-  ![image-20220107095224079](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220107095224079.png)
+  ![image-20220107095224079](..\images\image-20220107095224079.png)
 
 ## simclr这些设置到底起了多大作用呢？实验看一下
 
 - MLP head， 可见，有了mlp的效果提升还是比较大的，当$\tau=0.2$时，提升了大约7%。
 
-  ![image-20220107095655968](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220107095655968.png)
+  ![image-20220107095655968](..\images\image-20220107095655968.png)
 
 - augment的效果
 
   > 1. 新的augment 带来了大于2.8%的提升
   > 2. detection上看，貌似aug比mlp带来了更大的提升82.2% -> 82%,这说明，这种linear classification的方法得到的精度，对于检测的迁移性，并不一定正相关。
 
-![image-20220107100229564](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220107100229564.png)
+![image-20220107100229564](..\images\image-20220107100229564.png)
 
 - 跟simclr做对比：可以看出moco v2 在更小的batch上面，取得了更好的效果，acc为linear classifier accuracy
 
   
 
-![image-20220107103141366](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220107103141366.png)
+![image-20220107103141366](..\images\image-20220107103141366.png)

@@ -60,7 +60,7 @@ filter:是一个encoder,finetuned with ITC和ITM，用来判断句子和图像�
 
 利用caption和filter,组合成一个新的数据集，然后再重新pretrained一个新的模型。
 
-![image-20220314150652689](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220314150652689.png)
+![image-20220314150652689](..\images\image-20220314150652689.png)
 
 
 
@@ -78,7 +78,7 @@ filter:是一个encoder,finetuned with ITC和ITM，用来判断句子和图像�
 
 - VQA: 当成生成式任务来做，采用如下方式进行finetune
 
-  ![image-20220314155124873](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220314155124873.png)
+  ![image-20220314155124873](..\images\image-20220314155124873.png)
 
 - 
 

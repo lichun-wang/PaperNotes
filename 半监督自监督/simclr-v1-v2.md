@@ -19,9 +19,9 @@ Github: https://github.com/google-research/simclr.
 
 下图是linear classifiers 的效果
 
-![image-20211110105603900](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20211110105603900.png)
+![image-20211110105603900](..\images\image-20211110105603900.png)
 
-![image-20211111154404267](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20211111154404267.png)
+![image-20211111154404267](..\images\image-20211111154404267.png)
 
 ## Introduction
 
@@ -41,10 +41,10 @@ Github: https://github.com/google-research/simclr.
 - 在上面的输出上，加上了一个projection head(2层MLP，中间ReLU)，实验发现，这样做更有利于contrastive loss的计算
 - 对于batch_size=N，经过aug，我们会得到2N的数据，其中正样本1对，其余的2（N-1）的数据，均作为负样本。
 - $sim(u,v) = u^Tv/||u||*||v||$, 这不就是数学上向量的内积的夹角嘛，在代码中，相当于点积后做了归一化操作，==就是cosine similarity，余弦相似度==， ==这里跟moco也是一样的，只不过moco的故意化操作L2 norm在网络中完成了==
-- ![image-20211110112345449](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20211110112345449.png)
+- ![image-20211110112345449](..\images\image-20211110112345449.png)
 - 最终的loss是计算的所有的positive pairs，both (i,j) and (j, i)
 - 伪代码如下：
-- ![image-20211111154921350](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20211111154921350.png)
+- ![image-20211111154921350](..\images\image-20211111154921350.png)
 
 ### Training with Large Batch Size
 
@@ -74,24 +74,24 @@ Default settng
 
 - Unsupervised contrastive learning benefits (more) from bigger models
 - nonlinear的头还是比较有用的，提升比较大，==kaiming的moco就是没有采用nonlinear，而是采用的linear==。
-- ![image-20211110174646352](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20211110174646352.png)
+- ![image-20211110174646352](..\images\image-20211110174646352.png)
 - NT-Xent损失函数，下面的XT-Xent 的loss就是对上面的loss ，log提取后的结果。
 
-![image-20211111142903339](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20211111142903339.png)
+![image-20211111142903339](..\images\image-20211111142903339.png)
 
 - 作者对比了在loss中，L2 norm, 和温度的对比效果，实验发现，没有了norm之后 contrastive acc很高，但是特征表达不是特别好，比较低。同时合适的温度也有较为明显的影响。（这里就是dot product和cosine similarity的区别，说明进行归一化还是很有必要的）
 
-  ![image-20211111144136313](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20211111144136313.png)
+  ![image-20211111144136313](..\images\image-20211111144136313.png)
 
 - ==larger batch is better==, longer training is better,（作者的部分对比实验是训练了1000epoch）
 
 ## Comparison with Sota
 
 - Linear evaluation:
-- ![image-20211111144524754](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20211111144524754.png)
+- ![image-20211111144524754](..\images\image-20211111144524754.png)
 - transfer learning:(可见基本上是有点效果的，相比supervised)
 
-![image-20211111145019009](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20211111145019009.png)
+![image-20211111145019009](..\images\image-20211111145019009.png)
 
 ## 附录
 
@@ -99,7 +99,7 @@ Default settng
 
 - color_distortion代码如下，
 
-- ![image-20211111151242266](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20211111151242266.png)
+- ![image-20211111151242266](..\images\image-20211111151242266.png)
 
 - 发现针对LARS optimizer , square root learning rate scaling 效果比单纯的scaling效果要好。
 
@@ -139,11 +139,11 @@ Default settng
 
 - 10% label data 在imagenet上，resnet50可以达到77.5%的效果。
 
-![image-20220111100442618](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220111100442618.png)
+![image-20220111100442618](..\images\image-20220111100442618.png)
 
 - 根据作者的经验，越少的数据，越需要大模型，大的自监督模型更加的数据高效，在小数据上finetune的时候明显会更好，即使他们更容易过拟合
 
-- ![image-20220111100853755](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220111100853755.png)
+- ![image-20220111100853755](..\images\image-20220111100853755.png)
 
 - 进一步说明了非线性投影头（projection head）的重要性，不仅对改善特征表示有帮助，对半监督也很有效果
 
@@ -155,18 +155,18 @@ Default settng
 
 - 蒸馏loss: , P代表softmax
 
-  ![image-20220111105809415](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220111105809415.png)
+  ![image-20220111105809415](..\images\image-20220111105809415.png)
 
 - 如果label的数据比较多 也可以把label的loss加上
 
-  ![image-20220111105937442](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220111105937442.png)
+  ![image-20220111105937442](..\images\image-20220111105937442.png)
 
   
 
 - 参数细节可以看论文 Settings and Implementation Details，设置还是比较常规的。值得一提的是，在finetune和distilation的时候，并没有采用过多的augment，只是采用了random crop 和 horizontal flips，==这个感觉有点少，不知作者是何意？是这样效果比较好？论文中貌似没提==
 
 - 从下面这个表可以看出，自监督后，使用100%数据finetune是要比supervised直接训练的效果要好的。并且随着网络结构变得复杂，finetune后的表现是会变好的，虽然可能从resnet50->resnet101->resnet152 的变化可能并不是特别大，57%->62%->64%，但是当进一步加大152的时候，就飙到了75%，相比57%就比较明显了。并且可以看出，在监督学习领域，这个方法的提升可能不大（4%），但是对自监督明显就大了（9%），并且这个模型增大也不是一直涨，可以看到resnet152 sk x2 和 x3，相差就不是特别大了。这里的supervise应用了很多的augment
-- ![image-20220111113030474](C:\Users\wanglichun\Desktop\Typera\TyporaPapers\images\image-20220111113030474.png)
+- ![image-20220111113030474](..\images\image-20220111113030474.png)
 
 - 值得一提的是，当使用更大的resnet的时候，更深的projection head的作用就相对小一些了
 - 大的teacher还可以采用自蒸馏的方式，提升自己的效果
